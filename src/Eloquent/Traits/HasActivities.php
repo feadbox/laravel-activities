@@ -13,8 +13,8 @@ trait HasActivities
         return $this->morphMany(Activity::class, 'activitiable');
     }
 
-    public function activity(ActivityContract $activity)
+    public function activity(ActivityContract $activity): Activity
     {
-        $this->activities()->create(['message' => $activity->message()]);
+        return $this->activities()->create(['message' => $activity->message()]);
     }
 }
