@@ -13,6 +13,11 @@ trait HasActivities
         return $this->morphMany(Activity::class, 'activitiable');
     }
 
+    public function latestActivities(): MorphMany
+    {
+        return $this->activities()->latest('id');
+    }
+
     public function activity(ActivityContract $activity): Activity
     {
         return $this->activities()->create(['message' => $activity->message()]);
